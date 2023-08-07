@@ -1,16 +1,33 @@
 import os
-from dotenv import load_dotenv , dotenv_values
+from dotenv import load_dotenv, dotenv_values
+import telebot
+from telebot import types
 
 load_dotenv()
-BOT_TOKEN = "6499678561:AAHxLJ2DSGO0SZJKYjzJ9LTaKO0dHDeIJz8"
-
-import telebot
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
 @bot.message_handler(commands=['start', 'hello'])
 def send_welcome(message):
-    bot.reply_to(message, "Howdy, how are you doing?")
+    markup = types.InlineKeyboardMarkup()
+    button1 = types.InlineKeyboardButton("Button 1", callback_data='button1')
+    button2 = types.InlineKeyboardButton("Button 2", callback_data='button2')
+    button3 = types.InlineKeyboardButton("Button 3", callback_data='button3')
+    button4 = types.InlineKeyboardButton("Button 4", callback_data='button4')
+    markup.add(button1, button2, button3, button4)
 
+    bot.reply_to(message, "Howdy, how are you doing?", reply_markup=markup)
+
+@bot.callback_query_handler(func=lambda call: True)
+def handle_callback_query(call):
+    if call.data == 'button1':
+        bot.answer_callback_query(call.id, "You clicked Button 1")
+    elif call.data == 'button2':
+        bot.answer_callback_query(call.id, "You clicked Button 2")
+    elif call.data == 'button3':
+        bot.answer_callback_query(call.id, "You clicked Button 3")
+    elif call.data == 'button4':
+        bot.answer_callback_query(call.id, "You clicked Button 4")
 
 bot.infinity_polling()
