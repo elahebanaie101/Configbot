@@ -1,0 +1,28 @@
+{
+    "accounts": [
+        {
+            "id": 1,
+            "uuid": "5e7e62c2-9e34-4a09-9cd4-3ce3c1a2c91a",
+            "username": "john_doe",
+            "email": "john.doe@example.com",
+            "balance": 5000,
+            "start_time": "2022-01-01T09:00:00"
+        },
+        {
+            "id": 2,
+            "uuid": "a9b5e1a1-63b6-4a75-9f9e-df6b0b4d6c9c",
+            "username": "jane_smith",
+            "email": "jane.smith@example.com",
+            "balance": 7500,
+            "start_time": "2023-08-05T22:57:06.971710"
+        },
+        {
+            "id": 3,
+            "uuid": "eb8e5e17-8a8e-4a9f-8f0b-2d681faa0c3d",
+            "username": "alex_wilson",
+            "email": "alex.wilson@example.com",
+            "balance": 10000,
+            "start_time": "2022-03-10T11:45:00"
+        }
+    ]
+}
