@@ -1,5 +1,5 @@
 global json_file
-json_file = "vertopal.com_New Text Document.json" # this is supposrd to be users jason adress
+json_file = "json file.json" # this is supposrd to be users jason adress
 
 def new_account():
     # if we are talking about a json file 
