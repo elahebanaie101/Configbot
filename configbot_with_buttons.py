@@ -4,7 +4,7 @@ import telebot
 from telebot import types
 import helpers as hp
 load_dotenv()
-BOT_TOKEN = "6523955590:AAFb9J4LAtTO0zoiVirg3FbDE9jUL6HNsWA"
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
