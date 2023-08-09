@@ -22,8 +22,11 @@ def new_account():
 
 def create_new_account(user_id):
     result = new_account()
-    uuid, account = result[0], result[1]
-    account["id"] = user_id
+    if result != None :
+        uuid, account = result[0], result[1]
+        account["id"] = user_id
+        return account
+    return None
 
 if __name__ == "__main__":
     print(new_account())

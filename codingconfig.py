@@ -4,7 +4,7 @@ import telebot
 from telebot import types
 import helpers as hp
 load_dotenv()
-BOT_TOKEN = os.getenv("BOT_TOKEN")
+BOT_TOKEN = "6523955590:AAFb9J4LAtTO0zoiVirg3FbDE9jUL6HNsWA"
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
@@ -29,8 +29,9 @@ def handle_callback_query(call):
     elif call.data == 'button3':
         bot.answer_callback_query(call.id, "You clicked Button 3")
     elif call.data == 'button4':
-        hp.create_new_accounty(user_id)
-        bot.answer_callback_query(call.id, "here is your account config")
-
-
+        account = hp.create_new_account(user_id) 
+        if account :
+            bot.answer_callback_query(call.id, f"here is your account config, and account info\n {account}")
+        else:
+            bot.answer_callback_query(call.id, "there is no free account in json-file")
 bot.infinity_polling()
