@@ -1,5 +1,5 @@
 global json_file
-json_file = "json file.json" # this is supposrd to be users jason adress
+json_file = "/etc/pandora/accounts.json" # this is supposrd to be users jason adress
 
 def new_account():
     # if we are talking about a json file 
@@ -11,22 +11,15 @@ def new_account():
 
         accounts = data['accounts'] 
         for account in accounts:
-            if "start_time" not in account or account["start_time"] == "":
+            if not account["start_time"]:
                 today = datetime.now().isoformat()
                 account["start_time"] = today
                 jf.seek(0) # moving the pointer to frist 
                 json.dump(data, jf, indent=4) # setting the whole file to the cahnged data
                 jf.truncate()
                 return account["uuid"], account
-    return None # if there is no starting time return None
+    raise Exception("no free accounts left")
 
-def create_new_account(user_id):
-    result = new_account()
-    if result != None :
-        uuid, account = result[0], result[1]
-        account["id"] = user_id
-        return account
-    return None
 
 if __name__ == "__main__":
     print(new_account())
